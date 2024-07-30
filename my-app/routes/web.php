@@ -15,6 +15,9 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('home');
 });
-// Route::get('/posts', [PostController::class,'LoadPosts']);
+
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/posts/create', [PostController::class, 'create']);
