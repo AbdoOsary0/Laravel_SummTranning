@@ -22,7 +22,6 @@ class PostController extends Controller
   public function store(PostFormRequest $request)
   {
     $request->validate([
-      // or ['required','min:5']
       'title' => 'required|min:5',
       'content' => 'required|min:10',
     ]);
@@ -30,6 +29,7 @@ class PostController extends Controller
       'title' => $request->title,
       'content' => $request->content,
       'created_at' => now(),
+      'updated_at' => null,
       'user_id' => 1
     ]);
     return redirect()->route('posts.index')->with('SuccessMeg', 'Post Added Succes Fully');
