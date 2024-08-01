@@ -46,14 +46,10 @@ class PostController extends Controller
   }
   public function update(PostFormRequest $request, $id)
   {
-    $request->validate([
-      // or ['required','min:5']
-
-    ]);
     Post::Where('id', $id)->update([
       'title' => $request->title,
       'content' => $request->content,
-      'created_at' => now(),
+      'updated_at ' => now(),
     ]);
     return redirect()->route('posts.index')->with('SuccessMeg', 'Post updated Succes Fully');
   }
