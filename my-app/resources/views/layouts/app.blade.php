@@ -46,6 +46,16 @@
         @yield('create-post')
     </div>
 
+    {{-- @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
+
     <footer class="bg-dark text-white mt-5">
         <div class="container py-4">
             <div class="row justify-content-center">
