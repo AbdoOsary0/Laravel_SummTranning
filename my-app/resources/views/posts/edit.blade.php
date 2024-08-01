@@ -10,10 +10,16 @@
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" required>
             </div>
+            @error('title')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea class="form-control" id="content" name="content" rows="5" required>{{ $post->content }}</textarea>
             </div>
+            @error('content')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
             <div class="vstack">
                 <button type="submit" class="btn btn-primary">Update Post</button>
             </div>

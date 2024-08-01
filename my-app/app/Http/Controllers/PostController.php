@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
@@ -18,8 +19,13 @@ class PostController extends Controller
   {
     return view('posts.create');
   }
-  public function store(Request $request)
+  public function store(PostFormRequest $request)
   {
+    $request->validate([
+      // or ['required','min:5']
+      'title' => 'required|min:5',
+      'content' => 'required|min:10',
+    ]);
     Post::create([
       'title' => $request->title,
       'content' => $request->content,
@@ -38,8 +44,12 @@ class PostController extends Controller
     $post = Post::findOrFail(intval($id));
     return view('posts.edit', ['post' => $post]);
   }
-  public function update(Request $request, $id)
+  public function update(PostFormRequest $request, $id)
   {
+    $request->validate([
+      // or ['required','min:5']
+
+    ]);
     Post::Where('id', $id)->update([
       'title' => $request->title,
       'content' => $request->content,
